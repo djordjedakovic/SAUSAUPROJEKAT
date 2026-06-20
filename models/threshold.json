@@ -1,0 +1,13 @@
+{
+  "threshold": 0.03,
+  "thresholds_all_models": {
+    "raw": 0.03,
+    "platt": 0.06,
+    "iso": 0.03,
+    "undersample": 0.1,
+    "iforest": 0.09000004486967036,
+    "rf": 0.03,
+    "logreg": 0.05
+  },
+  "criterion": "max recall; precision>=5%"
+}

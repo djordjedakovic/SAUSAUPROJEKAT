@@ -1,0 +1,38 @@
+{
+  "svi_atributi": [
+    "Vodostaj_Bileca",
+    "Dotok_Prethodni_Dan",
+    "Padavine_Trebinje",
+    "Temperatura_Vazduha",
+    "Doba_Godine_enc",
+    "Pritisak_Mreze_enc",
+    "Padavine_Sutra",
+    "Padavine_Za2Dana",
+    "Promjena_Vodostaja"
+  ],
+  "zadrzani_atributi": [
+    "Dotok_Prethodni_Dan",
+    "Pritisak_Mreze_enc",
+    "Promjena_Vodostaja",
+    "Padavine_Sutra",
+    "Padavine_Trebinje"
+  ],
+  "odbaceni_atributi": [
+    "Vodostaj_Bileca",
+    "Temperatura_Vazduha",
+    "Padavine_Za2Dana",
+    "Doba_Godine_enc"
+  ],
+  "vaznost_atributa": {
+    "Dotok_Prethodni_Dan": 0.5245646238327026,
+    "Pritisak_Mreze_enc": 0.22871437668800354,
+    "Promjena_Vodostaja": 0.08200686424970627,
+    "Padavine_Sutra": 0.03624822199344635,
+    "Padavine_Trebinje": 0.036045514047145844,
+    "Vodostaj_Bileca": 0.03268572688102722,
+    "Temperatura_Vazduha": 0.028063373640179634,
+    "Padavine_Za2Dana": 0.02501485124230385,
+    "Doba_Godine_enc": 0.006656518206000328
+  },
+  "top5_clf_threshold": 0.01
+}

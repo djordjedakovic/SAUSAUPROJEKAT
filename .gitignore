@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# Models / data (veliki binarni fajlovi)
+models/*.joblib
+data/splits.joblib
+data/hetI_clean.csv
+
+# Output fajlovi koji se regenerisu
+plots/*.png
+metrics.json
+tumacenje.txt
+
+# Environments
+venv/
+.venv/
+env/

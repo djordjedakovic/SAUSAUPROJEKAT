@@ -1,0 +1,32 @@
+[project]
+name = "he-trebinje-i"
+version = "1.0.0"
+description = "Predikcija vremenskih serija za HE Trebinje I - regresija agregata i klasifikacija rizika preliva"
+requires-python = ">=3.10"
+dependencies = [
+    "scikit-learn>=1.3.0",
+    "imbalanced-learn>=0.11.0",
+    "pandas>=2.1.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.13.0",
+    "streamlit>=1.28.0",
+    "joblib>=1.3.0",
+    "xgboost>=2.0.0",
+]
+
+[project.scripts]
+prepare = "src.data_prep:main"
+train = "src.train:main"
+evaluate = "src.evaluate:main"
+predict = "src.predict:main"
+app = "app.app:main"
+
+[tool.pyright]
+extraPaths = [".", "./src"]
+reportMissingModuleSource = false
+reportMissingImports = false
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "app*"]
