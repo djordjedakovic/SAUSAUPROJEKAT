@@ -13,6 +13,9 @@ from src.predict import forecast_7days, demo_days
 
 st.set_page_config(page_title="HE Trebinje I", layout="wide")
 
+VALID_DOBA_OPTS  = ["Zima","Proljece","Ljeto","Jesen"]
+VALID_PRIT_OPTS = ["Nisko","Srednje","Visoko"]
+
 MODELS = os.path.join(BASE, "models")
 
 th_path = os.path.join(MODELS, "threshold.json")
@@ -33,7 +36,18 @@ st.caption("Planiranje agregata i rizik preliva — prognoza za 7 dana.")
 st.subheader("Unos podataka za 7 dana")
 
 if st.button("Ucitaj demo"):
-    st.session_state["demo"] = demo_days()
+    demo_data = demo_days()
+    st.session_state["demo"] = demo_data
+    for i, day in enumerate(demo_data):
+        st.session_state[f"v{i}"]  = float(day["Vodostaj_Bileca"])
+        st.session_state[f"d{i}"]  = float(day["Dotok_Prethodni_Dan"])
+        st.session_state[f"p{i}"]  = float(day["Padavine_Trebinje"])
+        st.session_state[f"t{i}"]  = float(day["Temperatura_Vazduha"])
+        st.session_state[f"s{i}"]  = float(day["Padavine_Sutra"])
+        st.session_state[f"z{i}"]  = float(day["Padavine_Za2Dana"])
+        st.session_state[f"pv{i}"] = float(day["Promjena_Vodostaja"])
+        st.session_state[f"do{i}"] = VALID_DOBA_OPTS.index(day["Doba_Godine"])
+        st.session_state[f"pr{i}"] = VALID_PRIT_OPTS.index(day["Pritisak_Mreze"])
 
 demo = st.session_state.get("demo")
 days = []
@@ -59,13 +73,11 @@ for i in range(7):
         p2  = c2.number_input("Padavine +2d", 0., 300.,
                               float(defaults.get("Padavine_Za2Dana", 0.)),
                               0.5, key=f"z{i}")
-        doba_opts = ["Zima","Proljece","Ljeto","Jesen"]
-        do  = c3.selectbox("Doba", doba_opts,
-                           doba_opts.index(defaults.get("Doba_Godine","Proljece")),
+        do  = c3.selectbox("Doba", VALID_DOBA_OPTS,
+                           VALID_DOBA_OPTS.index(defaults.get("Doba_Godine","Proljece")),
                            key=f"do{i}")
-        prit_opts = ["Nisko","Srednje","Visoko"]
-        pr  = c3.selectbox("Pritisak", prit_opts,
-                           prit_opts.index(defaults.get("Pritisak_Mreze","Srednje")),
+        pr  = c3.selectbox("Pritisak", VALID_PRIT_OPTS,
+                           VALID_PRIT_OPTS.index(defaults.get("Pritisak_Mreze","Srednje")),
                            key=f"pr{i}")
         pv  = c3.number_input("Promjena vodostaja", -2., 2.,
                               float(defaults.get("Promjena_Vodostaja", 0.)),
