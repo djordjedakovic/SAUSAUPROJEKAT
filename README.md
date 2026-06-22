@@ -15,6 +15,23 @@ Sopstveno prikupljeni i ocisceni podaci o Bileckom jezeru (HE Trebinje I):
 - **Target 1** (regresija): Angazovani_Agregati (0-3)
 - **Target 2** (klasifikacija): Preliv_Status (0/1, svega 1.28% pozitivnih)
 
+## EDA — Eksplorativna analiza
+
+Automatski se izvrsava u okviru `data_prep.py`. Generise 7 grafika u `plots/`:
+
+- `eda_target_distribution.png` — distribucija target varijabli
+- `eda_correlation.png` — korelaciona matrica svih atributa
+- `eda_distributions.png` — histogrami numerickih atributa
+- `eda_boxplot_season.png` — box plotovi po sezoni
+- `eda_agregati_patterns.png` — agregati po sezoni i pritisku mreze
+- `eda_by_preliv.png` — distribucije razlozene po Preliv_Status
+- `eda_timeseries.png` — vremenske serije kljucnih atributa
+
+Svi nalazi se stampaju u konzolu: oblik dataset-a, deskriptivna statistika, klasni disbalans,
+distribucije kategorija, korelacije, sezonski obrasci.
+
+Kljucni zakljucci EDA ukljuceni su u PDF dokumentaciju (Sekcija 2).
+
 ## Struktura projekta
 
 ```
@@ -34,7 +51,7 @@ HET/
 │   └── app.py                   # Streamlit interaktivna aplikacija
 ├── src/
 │   ├── config.py                # konstante
-│   ├── data_prep.py             # KORAK 1: priprema podataka
+│   ├── data_prep.py             # KORAK 1: EDA, ciscenje, split
 │   ├── train.py                 # KORAK 2: treniranje vise varijanti
 │   ├── evaluate.py              # KORAK 3: evaluacija i poredjenje
 │   └── predict.py               # KORAK 4: 7-dnevna prognoza
@@ -48,7 +65,7 @@ HET/
 # Instalacija zavisnosti
 pip install -r requirements.txt
 
-# Korak 1: Priprema podataka
+# Korak 1: EDA + Priprema podataka
 python src/data_prep.py
 
 # Korak 2: Treniranje svih varijanti
