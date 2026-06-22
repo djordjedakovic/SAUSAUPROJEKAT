@@ -18,24 +18,28 @@ Sopstveno prikupljeni i ocisceni podaci o Bileckom jezeru (HE Trebinje I):
 ## Struktura projekta
 
 ```
-PROJEKTOVANJE/
+HET/
 ├── pyproject.toml
 ├── README.md
+├── requirements.txt
 ├── .gitignore
+├── generate_pdf.py              # generator PDF dokumentacije
+├── dokumentacija.pdf            # generisana PDF dokumentacija
+├── RA156-2023Dokumentacija.pdf  # projektna dokumentacija
 ├── data/
-│   ├── hetI.csv              # originalni dataset
-│   ├── hetI_clean.csv        # ocisceni dataset
-│   └── splits.joblib         # train/val/test splitovi
-├── models/                   # sacuvani modeli, enkoderi, pragovi
-├── plots/                    # generisani grafici
+│   ├── hetI.csv                 # originalni dataset
+│   ├── hetI_clean.csv           # ocisceni dataset
+│   └── splits.joblib            # train/val/test splitovi
+├── models/                      # sacuvani modeli, enkoderi, pragovi
+├── plots/                       # generisani grafici
 ├── app/
-│   └── app.py                # Streamlit interaktivna aplikacija
+│   └── app.py                   # Streamlit interaktivna aplikacija
 ├── src/
-│   ├── config.py             # konstante
-│   ├── data_prep.py          # KORAK 1: priprema podataka
-│   ├── train.py              # KORAK 2: treniranje vise varijanti
-│   ├── evaluate.py           # KORAK 3: evaluacija i poredjenje
-│   └── predict.py            # KORAK 4: 7-dnevna prognoza
+│   ├── config.py                # konstante
+│   ├── data_prep.py             # KORAK 1: priprema podataka
+│   ├── train.py                 # KORAK 2: treniranje vise varijanti
+│   ├── evaluate.py              # KORAK 3: evaluacija i poredjenje
+│   └── predict.py               # KORAK 4: 7-dnevna prognoza
 ├── metrics.json
 └── tumacenje.txt
 ```
@@ -96,14 +100,17 @@ Za **klasifikaciju** je istrazeno **7 varijanti** kako bi se istrazila mogucnost
 
 ## Streamlit aplikacija
 
-Interaktivna aplikacija sa 3 taba:
-1. **Podaci** — EDA, distribucije, korelacije, sezonski pregled
-2. **Modeli** — poredjenje svih varijanti, metrike, grafici
-3. **Prognoza** — 7-dnevna prognoza agregata i rizika preliva
+Interaktivna aplikacija za 7-dnevnu prognozu agregata i rizika preliva:
+
+- **Unos podataka** — 7 prosirivih panela, svaki sa 9 ulaznih vrijednosti (vodostaj, dotok, padavine, temperatura, doba godine, pritisak mreze, promjena vodostaja, padavine sutra, padavine za 2 dana)
+- **Demo podaci** — dugme "Ucitaj demo" popunjava polja primjerom iz `predict.demo_days()`
+- **Prognoza** — dugme "Prognoza" poziva `forecast_7days()`, prikazuje tabelu sa brojem agregata, kontinualnom vrijednoscu, vjerovatnocom preliva i statusom (RIZIK / OK)
+- **Vizuelizacija** — dual-axis bar chart: plavi stubici za agregate, crveni/zeleni za vjerovatnocu preliva sa linijom praga odluke
+- **Upozorenje** — crvena poruka sa danima rizika ako postoji opasnost od preliva, odnosno zelena poruka ako nema rizika
 
 ## Tehnologije
 
-- Python 3.10+, uv za upravljanje projektom
+- Python 3.10+
 - XGBoost, scikit-learn, imbalanced-learn
 - pandas, numpy, matplotlib, seaborn
 - Streamlit za interaktivnu vizuelizaciju
