@@ -10,7 +10,6 @@ data/splits.joblib
 data/hetI_clean.csv
 
 # Output fajlovi koji se regenerisu
-plots/*.png
 metrics.json
 tumacenje.txt
 
