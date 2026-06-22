@@ -1,6 +1,6 @@
 # HE Trebinje I — Predikcija vremenskih serija
 
-Projekat iz predmeta **Inteligentni sistemi** (Nivo 3 — sopstveni dataset i trening modela).
+Projekat iz predmeta **SAUSAU** (Nivo 3 — sopstveni dataset i trening modela).
 
 Sistem masinskog ucenja za upravljanje hidroelektranom Trebinje I:
 
