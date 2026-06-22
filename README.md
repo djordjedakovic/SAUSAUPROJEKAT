@@ -23,8 +23,6 @@ HET/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── generate_pdf.py              # generator PDF dokumentacije
-├── dokumentacija.pdf            # generisana PDF dokumentacija
 ├── RA156-2023Dokumentacija.pdf  # projektna dokumentacija
 ├── data/
 │   ├── hetI.csv                 # originalni dataset
