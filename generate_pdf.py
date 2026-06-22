@@ -24,7 +24,7 @@ def title_page():
     pdf.ln(10)
     pdf.set_font("DejaVu", "I", 13)
     pdf.cell(0, 8, "Projekat iz predmeta SAUSAU", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 8, "Nivo 3 — sopstveni dataset i trening modela", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, "RA156-2023", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(20)
     pdf.set_font("DejaVu", "", 11)
     pdf.cell(0, 7, "Autor: Đorđe Đaković", align="C", new_x="LMARGIN", new_y="NEXT")
